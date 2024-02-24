@@ -1,0 +1,1 @@
+This directory contains the source code to accompany blog posts.
