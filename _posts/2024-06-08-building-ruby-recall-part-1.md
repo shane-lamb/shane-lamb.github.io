@@ -98,6 +98,7 @@ To bring parity with Rails and add the missing commands, I did the following:
 1. Added `rake` as a dependency in the Gemfile.
 
 2. Created a `Rakefile` in the root of the project with the following code:
+
 ```ruby
 require "active_record"
 
@@ -158,9 +159,11 @@ DatabaseTasks.db_dir = db_dir
 DatabaseTasks.database_configuration = all_db_configs
 DatabaseTasks.migrations_paths = File.join(db_dir, "migrate")
 ```
+
 The environment is hardcoded to `development` as we currently have no use for multiple environments.
 
 5. Created a `db/config.yml` file to store the database config (very simple):
+
 ```yaml
 development:
   adapter: sqlite3
@@ -170,6 +173,7 @@ development:
 ### Doing our first migration
 
 Now that we have `rake` commands available to manage migrations, I created a migration for the flashcards table using `rake g:migration create_flashcards`, which generate an empty file in the migrations folder, which I then filled with:
+
 ```ruby
 class CreateFlashcards < ActiveRecord::Migration[7.1]
   def change
@@ -182,11 +186,13 @@ class CreateFlashcards < ActiveRecord::Migration[7.1]
   end
 end
 ```
+
 The model is simple, a flashcard has a front (question) and a back (answer).
 
 ## Updating the app code to use the database
 
 I first created a seed script to populate the database with the same questions and answers that were previously hard-coded:
+
 ```ruby
 require_relative "../db/init"
 require_relative "models/flashcard"
@@ -200,6 +206,7 @@ Flashcard.create!(flashcards)
 ```
 
 Then I needed to update the LLM generated code to read the flashcards from the database:
+
 ```ruby
 require "active_record"
 require_relative "models/flashcard"
