@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a flashcard app in Ruby - Part 2
-date: 2024-06-08
+date: 2024-06-28
 ---
 
 ## Re-assessing
