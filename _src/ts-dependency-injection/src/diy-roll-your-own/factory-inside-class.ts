@@ -1,5 +1,4 @@
-import { memoize } from 'lodash'
-import { getPlaceholderForRealDB } from '../common'
+import { getPlaceholderForRealDB, memoize } from '../common'
 
 export const dependencies = {
     // demonstrating that dependency resolvers can be nested to allow easy mocking

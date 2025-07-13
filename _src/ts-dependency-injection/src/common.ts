@@ -15,3 +15,12 @@ export function getPlaceholderForRealDB(): Database {
         }
     }
 }
+
+// an implementation of lodash's memoize that doesn't alter/pollute types
+export function memoize<T>(factory: () => T): () => T {
+    let cached: T
+    return () => {
+        if (cached === undefined) cached = factory()
+        return cached
+    }
+}

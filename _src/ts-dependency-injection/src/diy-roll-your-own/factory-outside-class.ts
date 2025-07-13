@@ -1,5 +1,4 @@
-import { memoize } from 'lodash'
-import { getPlaceholderForRealDB, Database } from '../common'
+import { getPlaceholderForRealDB, Database, memoize } from '../common'
 
 export class Repository {
     constructor(private db: Database) {

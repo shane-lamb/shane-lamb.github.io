@@ -1,5 +1,5 @@
 import { Repository, Service } from './factory-inside-class'
-import { mock } from 'jest-mock-extended'
+import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('No-framework approach to managing dependencies (mocking repository)', () => {
     it('should allowing mocking of the Repository', () => {
@@ -12,8 +12,8 @@ describe('No-framework approach to managing dependencies (mocking repository)', 
 })
 
 // example of handy function to reduce boilerplate when mocking!
-function mockInstance<T>(singleton: { getInstance: () => T }) {
+function mockInstance<T>(singleton: { getInstance: () => T }): MockProxy<T> {
     const thisMock = mock<T>()
-    jest.spyOn(singleton, 'getInstance').mockReturnValue(thisMock)
+    singleton.getInstance = () => thisMock
     return thisMock
 }

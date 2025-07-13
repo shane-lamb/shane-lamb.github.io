@@ -2,8 +2,8 @@ import { dependencies, Service } from './factory-inside-class'
 
 describe('No-framework approach to managing dependencies (mocking DB)', () => {
     it('should allow mocking of the Database', () => {
-        // spyOn(dependencies, 'getDb') is type-safe
-        jest.spyOn(dependencies, 'getDb').mockReturnValue({
+        // type-safe mocking
+        dependencies.getDb = () => ({
             query: () => [{ id: 2, name: 'mocked' }],
         })
 
